@@ -6,12 +6,12 @@ from pathlib import Path
 import numpy as np
 
 
-SURE_DATA_ROOT = Path("/data/kld/SURE/data")
-SURE_RESULTS_ROOT = Path("/data/kld/SURE/results")
+SURE_DATA_ROOT = Path("./data")
+SURE_RESULTS_ROOT = Path("./results")
 DEFAULT_TREC_DIRS = {
-    "fiqa": Path("/data/kld/fiqa-faiss-pyserini/res"),
-    "msmarco": Path("/data/kld/msmarco-faiss-pyserini/res"),
-    "nq": Path("/data/kld/nq-faiss-pyserini/res"),
+    "fiqa": Path("./results/fiqa-faiss-pyserini/res"),
+    "msmarco": Path("./results/msmarco-faiss-pyserini/res"),
+    "nq": Path("./results/nq-faiss-pyserini/res"),
 }
 
 
@@ -71,7 +71,7 @@ def parse_args():
         "--data-root",
         type=Path,
         default=SURE_DATA_ROOT,
-        help="Root directory containing SURE data. Defaults to /data/kld/SURE/data.",
+        help="Root directory containing SURE data. Defaults to ./data.",
     )
     parser.add_argument(
         "--score-file",
@@ -83,7 +83,7 @@ def parse_args():
         "--trec-file",
         type=Path,
         default=None,
-        help="Optional explicit top2000 TREC file. Defaults to /data/kld/{dataset}-faiss-pyserini/res/{model}-2000.txt.",
+        help="Optional explicit top2000 TREC file.",
     )
     parser.add_argument(
         "--gold-trec-file",
@@ -95,13 +95,13 @@ def parse_args():
         "--qrel-file",
         type=Path,
         default=None,
-        help="Optional qrel TSV path. Defaults to /data/kld/SURE/data/{dataset}/qrels-*.tsv.",
+        help="Optional qrel TSV path. Defaults to ./data/{dataset}/qrels-*.tsv.",
     )
     parser.add_argument(
         "--output-root",
         type=Path,
         default=None,
-        help="Optional evaluation output root. Defaults to /data/kld/SURE/results/{dataset}.",
+        help="Optional evaluation output root. Defaults to ./results/{dataset}.",
     )
     parser.add_argument(
         "--qids-file",

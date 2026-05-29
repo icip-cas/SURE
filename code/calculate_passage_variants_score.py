@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Optional
 from sentence_transformers import SentenceTransformer
+import torch
+from vllm import LLM
 
 
 DEFAULT_TASK_DESCRIPTION = "Given a web search query, retrieve relevant passages that answer the query"
@@ -287,9 +289,6 @@ def read_done_qids(output_path: Path):
 
 class VllmEmbedder:
     def __init__(self, args):
-        import torch
-        from vllm import LLM
-
         self.torch = torch
         self.model = LLM(
             model=args.model_path,
